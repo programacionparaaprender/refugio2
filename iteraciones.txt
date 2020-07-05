@@ -1,0 +1,222 @@
+----------------------------
+0.
+----------------------------
+Curso
+https://www.youtube.com/watch?v=yDnZ0hJBDmc&list=PLsRdPvQ2xMkH8c2BOnQ_O1KZ9lyyL_eGB&index=25
+python -m pip install virtualenv
+python -m venv django_venv
+
+instalar sql server
+python -m pip install django-pyodbc-azure
+
+python -m pip install bootstrap4
+python -m pip install djangorestframework
+
+--------------
+1. Creando proyecto y app
+------------------------
+
+
+django-admin.py startproject refugio
+
+python manage.py migrate
+
+python manage.py createsuperuser
+yancel209@gmail.com
+admin
+123456
+
+-----------------------
+----------------------
+2. crear aplicaciones estructura del proyecto
+-------------------
+---------------------
+
+django-admin.py startproject refugio
+cd refugito
+mkdir apps
+cd apps
+django-admin.py startapp mascota
+django-admin.py startapp adopcion
+
+
+python manage.py migrate
+----------------------------
+5. Modelos y migraciones
+-----------------------------
+models.py mascotas
+models.py adopcion
+
+python manage.py migrate
+-----------------------------
+6.- Curso Django - Relaciones
+------------------------
+admin.py mascotas
+admin.py adopcion
+python manage.py migrate
+
+-------------------------
+7.- Curso Django - Django Shell y Querysets
+--------------------------------------
+python manage.py shell
+from apps.adopcion.models import Persona
+from apps.mascota.models import Vacuna,Mascota
+
+Persona.objects.create(nombre="Luis",apellido="Correa",edad=26,telefono="3434123",email="alberto13711@gmail.com",domicilio="Venezuela")
+#si se usan variables hay que hacerlo as�
+p = Persona.objects.create(nombre="Percy",apellido="Correa",edad=67,telefono="3434123",email="percyelias20@outlook.com",domicilio="Venezuela")
+p.save()
+
+v1 = Vacuna(nombre="vacuna 3")
+v1.save()
+v2 = Vacuna(nombre="vacuna 2")
+v2.save()
+v3 = Vacuna(nombre="vacuna 1")
+v3.save()
+mascota1 = Mascota.objects.create(nombre="Pepe",sexo="macho",edad_aproximada=1,fecha_rescate="2016-09-01",persona=p)
+mascota1.save()
+mascota1.vacuna.add(v1)
+
+Mascota.objects.all()
+Mascota.objects.filter(id=1)
+Mascota.objects.filter(nombre__contains="1")
+
+--------------------------------
+8.- Curso Django - Configurar URLs y primera view
+------------------------------------------------
+mascota/views.py
+mascota/urls.py
+refugio/urls.py
+
+python manage.py runserver 8080
+
+
+python manage.py startapp polls
+python manage.py startapp books
+
+-------------------------------------
+9. Curso Django - Sistema Plantillas
+-------------------------------------
+settings.py se coloca la ubicación
+
+------------------------------
+10. Curso Django - Herencia de plantillas
+------------------------
+
+https://blog.nubecolectiva.com/como-integrar-django-y-bootstrap-4/
+----------------------
+
+-------------------
+11.- Curso Django - Configurar archivos estáticos
+---------------------------------------------
+colocar ubicaciones del los static en el settings.py
+y en los otros archivos
+
+
+--------------------------------
+12.- Curso Django - Formularios y vistas basadas en funciones crear
+----------------------------------------
+forms.py de mascotas}
+views.py de mascotas
+
+
+
+--------------------------
+19.- Curso Django - Crear Registro de Usuarios (modelo)
+---------------------------------
+
+django-admin.py startapp usuario
+
+----------------------
+-----------------------
+20.- Curso Django - Crear login (facilito)
+----------------------------
+
+
+----------------------------
+21.- Curso Django - Recuperar contraseña por correo (facilito)
+--------------------------------------------------------------
+https://stackoverflow.com/questions/52502862/django-2-1-passwordresetview-404
+https://stackoverflow.com/questions/49434711/trying-to-customize-the-django-setpasswordform
+https://docs.djangoproject.com/en/2.0/topics/auth/default/#module-django.contrib.auth.views
+https://www.youtube.com/watch?v=qjlZWBbX7-o
+nueva contraseña
+admin
+3YDZjZG3MWYwg
+
+
+--------------------------
+22.- Curso Django - Decorador login required
+---------------------------------------------
+login_required
+
+---------------------
+23.- Curso Django - Serializar objetos
+----------------------------
+Crear una api rest
+
+----------------------
+24.- Curso Django - Paginación
+-----------------
+
+------------------------------
+25.- Curso Django - Restframework ModelSerializer
+-------------------------------
+api rest framework
+apps.usuario
+
+https://www.django-rest-framework.org/
+
+---------------
+5.
+---------------------------------
+---
+
+python manage.py makemigrations polls
+python manage.py sqlmigrate polls 0001
+python manage.py migrate
+
+
+
+creando el admin
+
+python manage.py createsuperuser
+yancel209@gmail.com
+admin
+123456
+
+
+----------------------------------
+3.
+---------------------------------
+ejecutando la shell
+python manage.py shell
+from polls.models import Choice, Question
+from django.utils import timezone
+Question.objects.all()
+q = Question(question_text="What's new?", pub_date=timezone.now())
+q.save()
+q.id
+q.question_text
+q.question_text = "What's up?"
+q.save()
+q.pub_date
+Question.objects.filter(id=1)
+Question.objects.get(id=2)
+Question.objects.get(pk=1)
+Question.objects.filter(question_text__startswith='What')
+q = Question.objects.get(pk=1)
+q.was_published_recently()
+
+-------------------------
+
+--------------------------
+
+
+-----------------------
+6. Ejecutar aplicación
+---------------------
+
+
+
+python manage.py runserver 8080

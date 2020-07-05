@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Mi nuevo titulo
+{% endblock %}
+
+
+{% block content %}
+<div class="card card-default" style="width: 58rem;margin:auto;">
+
+	<div class="card-body">
+		<div>
+			<h5 class="card-title">Card title</h5>
+			<form method="POST" action="">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button  class="btn btn-primary" type="submit">Agregar</button>
+			<button  class="btn btn-warning" type="reset">Reset</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

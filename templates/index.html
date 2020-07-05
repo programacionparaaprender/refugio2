@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Mascotas
+{% endblock %}
+{% block navbar%}
+{% endblock %}
+{% block content %}
+<div class="card card-default" style="width: 28rem;margin:auto;">
+
+	<div class="card-body">
+		<div>
+			<h5 class="card-title">Card title</h5>
+			<form method="post">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-md-12 col-md-offset-3">
+						<div class="form-group">
+							<label for="username">Nombre de usuario:</label>
+							<input class="form-control" type="text" name="username">
+					</div>
+					</div>
+				</div>    
+				<div class="row">
+					<div class="col-md-12 col-md-offset-3">
+						<div class="form-group">
+							<label for="username">Contraseña:</label>
+							<input class="form-control" type="password" name="password">
+					</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-md-offset-3">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<input class="btn btn-primary" type="submit" value="Ingresar">
+							<input class="btn btn-warning" type="reset" value="reset">
+						</div>
+					</div>
+					<div class="col-md-12 col-md-offset-3">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<a href="{% url 'password_reset' %}">Olvidé mi contraseña</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
